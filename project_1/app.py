@@ -49,14 +49,15 @@ warnings.filterwarnings("ignore")
 
 
 DEFAULT_TARGET_PLAYER = "Enzo Fernández"
-CONNECTOR_CSV = Path("output/insights/connector_metrics_all_cms.csv")
-PLAYER_METRICS_CSV = Path("output/metrics/player_metrics.csv")
-ZONE_CSV = Path("output/insights/enzo_zone_progressions.csv")
-ENZO_DEF_CSV = Path("output/insights/enzo_defensive_actions.csv")
-POP_DEF_DENSITY_CSV = Path("output/insights/population_defensive_density_p90.csv")
-POP_PROG_DENSITY_CSV = Path("output/insights/population_progression_density_p90.csv")
+BASE_DIR = Path(__file__).parent
+CONNECTOR_CSV = BASE_DIR / "output/insights/connector_metrics_all_cms.csv"
+PLAYER_METRICS_CSV = BASE_DIR / "output/metrics/player_metrics.csv"
+ZONE_CSV = BASE_DIR / "output/insights/enzo_zone_progressions.csv"
+ENZO_DEF_CSV = BASE_DIR / "output/insights/enzo_defensive_actions.csv"
+POP_DEF_DENSITY_CSV = BASE_DIR / "output/insights/population_defensive_density_p90.csv"
+POP_PROG_DENSITY_CSV = BASE_DIR / "output/insights/population_progression_density_p90.csv"
 
-FIGURES_DIR = Path("output/figures")
+FIGURES_DIR = BASE_DIR / "output/figures"
 
 st.set_page_config(
     page_title="Enzo Fernández Deep Progression Analysis",
