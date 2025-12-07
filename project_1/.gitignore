@@ -44,11 +44,3 @@ data/raw/*.json
 # OS
 .DS_Store
 Thumbs.db
-
-# Project specific
-archive/
-output/figures/*.png
-output/metrics/*.csv
-!output/metrics/player_metrics.csv
-!output/figures/figure1_enzo_pitch_actions.png
-!output/figures/figure2_enzo_percentiles.png
