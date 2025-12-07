@@ -6,6 +6,9 @@ A comprehensive data-driven analysis of Enzo Fernández's performance during Arg
 
 ![Course Logo](https://images.squarespace-cdn.com/content/v1/5ebd6f2be3bec9264595f15f/c38d561d-8e75-4a72-a05a-ae006c1d6e2c/TwelveLogo+3.png?format=1500w)
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://enzofernandezproject1.streamlit.app/)
+
+
 ---
 
 ## 📋 Project Goal
@@ -84,6 +87,9 @@ python pipeline_runner.py
 ### 3. Interactive Exploration
 
 Launch the Streamlit dashboard to interact with the data and explore different comparisons.
+
+[**👉 Click here to view the Live App**](https://enzofernandezproject1.streamlit.app/)
+
 
 ```bash
 streamlit run app.py
