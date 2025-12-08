@@ -201,7 +201,7 @@ def load_population_def_density() -> Optional[pd.Series]:
         return None
     try:
         df = pd.read_csv(POP_DEF_DENSITY_CSV, index_col=0)
-        return df['count_p90']
+        return df['p90']
     except Exception as e:
         return None
 
@@ -212,7 +212,7 @@ def load_population_prog_density() -> Optional[pd.Series]:
         return None
     try:
         df = pd.read_csv(POP_PROG_DENSITY_CSV, index_col=0)
-        return df['count_p90']
+        return df['p90']
     except Exception as e:
         return None
 

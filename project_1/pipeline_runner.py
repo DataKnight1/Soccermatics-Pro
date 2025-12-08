@@ -124,8 +124,14 @@ def main():
     prog_events = enzo_events[enzo_events['type'].isin(['Pass', 'Carry'])].copy()
     prog_events['progression_zone'] = prog_events.apply(get_prog_zone, axis=1)
 
+    # Combine progressions with receipts for the app
+    receipts_export = enzo_receipts[['type', 'location', 'reception_zone']].copy()
+    receipts_export['progression_zone'] = None  # Receipts don't have a progression zone yet
+
     prog_events_export = prog_events[['type', 'location', 'progression_zone', 'reception_zone']].copy()
-    prog_events_export.to_csv(INSIGHTS_DIR / "enzo_zone_progressions.csv", index=False)
+    
+    all_events_export = pd.concat([prog_events_export, receipts_export], ignore_index=True)
+    all_events_export.to_csv(INSIGHTS_DIR / "enzo_zone_progressions.csv", index=False)
 
     print("   3. Progression Heatmap...")
     fig3 = create_zone_heatmap_pitch(prog_events, 'progression_zone', f"{enzo_name}: Progression Target Zones", cmap="progression")
