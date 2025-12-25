@@ -2,7 +2,7 @@
 
 <img src="assets/twelve_logo.png" alt="Twelve Football" width="120"/>
 
-# ⚽ Expected Danger Model
+# Expected Danger Model
 
 ### *Quantifying Pass Danger in Premier League Football*
 
@@ -12,29 +12,29 @@
 
 **Model AUC:** 0.7639 | **Features:** 17 | **Dataset:** Premier League 2023-24
 
-[📓 View Notebook](Expected_Danger_Model.ipynb) • [⚙️ Methodology](#️-model-architecture) • [📊 Results](#-key-results)
+[View Notebook](Expected_Danger_Model.ipynb) • [Methodology](#model-architecture) • [Results](#key-results)
 
 </div>
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Key Results](#-key-results)
-- [Model Performance](#-model-performance)
-- [Feature Importance](#-feature-importance-shap-analysis)
-- [Spatial Visualizations](#-spatial-danger-visualization)
-- [Model Architecture](#️-model-architecture)
-- [Repository Structure](#-repository-structure)
-- [Usage](#-usage)
-- [Insights](#-insights)
-- [Tech Stack](#️-tech-stack)
-- [License](#-license)
+- [Overview](#overview)
+- [Key Results](#key-results)
+- [Model Performance](#model-performance)
+- [Feature Importance](#feature-importance-shap-analysis)
+- [Spatial Visualizations](#spatial-danger-visualization)
+- [Model Architecture](#model-architecture)
+- [Repository Structure](#repository-structure)
+- [Usage](#usage)
+- [Insights](#insights)
+- [Tech Stack](#tech-stack)
+- [License](#license)
 
 ---
 
-## 📊 Overview
+## Overview
 
 **Expected Danger (ED)** is a machine learning framework that quantifies how likely a pass will lead to a shot and goal. Unlike traditional pass completion metrics, ED evaluates the **offensive value** of passes based on spatial features, danger zones, and progression dynamics.
 
@@ -42,10 +42,10 @@
 
 The model analyzes **17 key features** including:
 
-- 📍 **Spatial positioning**: Distance and angle to goal
-- 🎯 **Danger zones**: Penalty box & final third penetration
-- ⚡ **Pass dynamics**: Progression, length, and angle change
-- ⏱️ **Temporal context**: Match phase (early/mid/late game)
+- **Spatial positioning**: Distance and angle to goal
+- **Danger zones**: Penalty box & final third penetration
+- **Pass dynamics**: Progression, length, and angle change
+- **Temporal context**: Match phase (early/mid/late game)
 
 ### Two-Model Architecture
 
@@ -59,7 +59,7 @@ The model analyzes **17 key features** including:
 
 ---
 
-## 🎯 Key Results
+## Key Results
 
 ### Top Danger Creators (Per 90 Minutes)
 
@@ -79,7 +79,7 @@ The model analyzes **17 key features** including:
 
 ---
 
-## 🧪 Model Performance
+## Model Performance
 
 ### V1 vs V2 Comparison
 
@@ -102,7 +102,7 @@ Despite adding 6 new features, performance gains are minimal because:
 
 ---
 
-## 🔍 Feature Importance (SHAP Analysis)
+## Feature Importance (SHAP Analysis)
 
 ### Feature Impact Distribution
 
@@ -125,7 +125,7 @@ Despite adding 6 new features, performance gains are minimal because:
 
 ---
 
-## 🌐 Spatial Danger Visualization
+## Spatial Danger Visualization
 
 ### All Teams - 3D Danger Surface Grid
 
@@ -159,7 +159,7 @@ Despite adding 6 new features, performance gains are minimal because:
 
 ---
 
-## ⚙️ Model Architecture
+## Model Architecture
 
 ### Feature Breakdown
 
@@ -207,7 +207,7 @@ Player Rankings / Visualizations
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 project_2/
@@ -228,7 +228,7 @@ project_2/
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### View the Notebook
 
@@ -259,7 +259,7 @@ pip install pandas numpy scikit-learn matplotlib seaborn shap plotly
 
 ---
 
-## 📈 Insights
+## Insights
 
 ### Key Findings
 
@@ -271,14 +271,14 @@ pip install pandas numpy scikit-learn matplotlib seaborn shap plotly
 
 ### Applications
 
-- **🔍 Player Scouting**: Identify high-danger passers beyond assist counts
-- **📊 Tactical Analysis**: Understand team passing patterns in dangerous zones
-- **🎯 Opposition Prep**: Predict which players create the most shooting opportunities
-- **📈 Performance Evaluation**: Measure creative output independent of finishing
+- **Player Scouting**: Identify high-danger passers beyond assist counts
+- **Tactical Analysis**: Understand team passing patterns in dangerous zones
+- **Opposition Prep**: Predict which players create the most shooting opportunities
+- **Performance Evaluation**: Measure creative output independent of finishing
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language**: Python 3.8+
 - **ML Framework**: scikit-learn
@@ -288,13 +288,13 @@ pip install pandas numpy scikit-learn matplotlib seaborn shap plotly
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Data**: Twelve Football / StatsBomb (Premier League 2023-24)
 - **Inspiration**: Expected Goals (xG) methodology adapted for pass danger quantification

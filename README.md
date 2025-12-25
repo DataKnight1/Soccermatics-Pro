@@ -2,7 +2,7 @@
 
 <img src="https://images.squarespace-cdn.com/content/v1/5ebd6f2be3bec9264595f15f/c38d561d-8e75-4a72-a05a-ae006c1d6e2c/TwelveLogo+3.png?format=1500w" alt="Twelve Football - Soccermatics Pro" width="200"/>
 
-# ⚽ Soccermatics Pro
+# Soccermatics Pro
 
 ### *Advanced Football Analytics & Data Science Portfolio*
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 📖 About This Repository
+## About This Repository
 
 This repository contains a comprehensive collection of data-driven football analytics projects completed as part of the **Twelve Soccermatics Pro** course. Each project demonstrates advanced techniques in sports analytics, machine learning, and data visualization applied to real-world football data.
 
@@ -24,28 +24,28 @@ The course, led by industry experts, focuses on transforming raw football data i
 
 ---
 
-## 🗂️ Projects Overview
+## Projects Overview
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🎯 [Project 1: Enzo Fernández World Cup Analysis](project_1/)
+### [Project 1: Enzo Fernández World Cup Analysis](project_1/)
 
 **Objective:** *Plotting Actions and Telling Stories*
 
 A comprehensive data-driven performance analysis of Enzo Fernández during Argentina's 2022 FIFA World Cup victory.
 
-#### 🔑 Key Features
+#### Key Features
 - **Player Performance Profiling**: Pizza charts and percentile rankings
 - **Spatial Analysis**: Progression heatmaps revealing tactical patterns
 - **Peer Comparison**: Statistical similarity analysis across midfielders
 - **Interactive Dashboard**: Live Streamlit application for dynamic exploration
 
-#### 📊 Technologies
+#### Technologies
 `Python` • `StatsBomb API` • `Streamlit` • `Matplotlib` • `Pandas`
 
-#### 🚀 Highlights
+#### Highlights
 - Identified Enzo's unique **right-sided pivot** role
 - Ranked **#2 in deep progressions** (11.44/90) among all midfielders
 - Built production-ready modular pipeline
@@ -56,7 +56,7 @@ A comprehensive data-driven performance analysis of Enzo Fernández during Argen
 </td>
 <td width="50%" valign="top">
 
-### 🧠 [Project 2: Expected Danger Model](project_2/)
+### [Project 2: Expected Danger Model](project_2/)
 
 **Objective:** *Quantifying Pass Danger Through Machine Learning*
 
@@ -85,7 +85,7 @@ A dual-model machine learning system that predicts the offensive value of passes
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 This portfolio leverages a modern data science and analytics stack:
 
@@ -109,7 +109,7 @@ This portfolio leverages a modern data science and analytics stack:
 
 ---
 
-## 📚 Course Structure
+## Course Structure
 
 The **Twelve Soccermatics Pro** course covers:
 
@@ -121,7 +121,7 @@ The **Twelve Soccermatics Pro** course covers:
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 Through these projects, I have developed expertise in:
 
@@ -136,7 +136,7 @@ Through these projects, I have developed expertise in:
 
 
 
-## 📄 License & Data Attribution
+## License & Data Attribution
 
 - **Code**: All original code in this repository is available for educational purposes
 - **Data**: StatsBomb Open Data (subject to their license terms)
@@ -144,7 +144,7 @@ Through these projects, I have developed expertise in:
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **[Twelve Football](https://twelve.football/)**: For creating an exceptional course bridging data science and football
 - **[StatsBomb](https://statsbomb.com/)**: For providing high-quality open football data

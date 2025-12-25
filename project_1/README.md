@@ -2,7 +2,7 @@
 
 <img src="https://images.squarespace-cdn.com/content/v1/5ebd6f2be3bec9264595f15f/c38d561d-8e75-4a72-a05a-ae006c1d6e2c/TwelveLogo+3.png?format=1500w" alt="Twelve Football" width="180"/>
 
-# ⚽ Enzo Fernández - World Cup 2022 Analysis
+# Enzo Fernández - World Cup 2022 Analysis
 
 ### *Argentina's Missing Piece: A Data-Driven Performance Study*
 
@@ -12,24 +12,100 @@
 
 **Course:** Twelve Soccermatics Pro | **Project:** Plotting Actions and Telling Stories
 
-[🚀 Live Dashboard](https://soccermatics-pro--enzo-fernandez-project1.streamlit.app/) • [📊 Analysis](#-key-findings-data-driven) • [💻 Quick Start](#-quick-start)
+[Live Dashboard](https://soccermatics-pro--enzo-fernandez-project1.streamlit.app/) • [Analysis](#key-findings-data-driven) • [Quick Start](#quick-start)
 
 </div>
 
 ---
 
-## 📑 Table of Contents
+## Visual Showcase
 
-- [Project Goal](#-project-goal)
-- [Key Findings](#-key-findings-data-driven)
-- [Project Structure](#️-project-structure)
-- [Quick Start](#-quick-start)
-- [Visualizations](#-visualizations)
-- [Author](#-author)
+<div align="center">
+
+### Key Analysis Outputs
+
+<br/>
+
+<table>
+<tr>
+<td width="50%" align="center" style="padding: 10px;">
+<img src="output/figures/1_performance_profile.png" alt="Performance Profile" width="95%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Performance Profile</b>
+<br/>
+<i>Percentile rankings showing elite progression and defensive output</i>
+</td>
+<td width="50%" align="center" style="padding: 10px;">
+<img src="output/figures/3_progression_heatmap.png" alt="Progression Heatmap" width="95%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Progression Heatmap</b>
+<br/>
+<i>Spatial distribution revealing distinctive right-sided bias</i>
+</td>
+</tr>
+<tr><td colspan="2"><br/></td></tr>
+<tr>
+<td width="50%" align="center" style="padding: 10px;">
+<img src="output/figures/4_distinctive_patterns_bias.png" alt="Distinctive Patterns" width="95%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Distinctive Patterns</b>
+<br/>
+<i>31% of progressions directed to Molina & Messi on the right</i>
+</td>
+<td width="50%" align="center" style="padding: 10px;">
+<img src="output/figures/5_progression_routes.png" alt="Progression Routes" width="95%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Progression Routes</b>
+<br/>
+<i>Passing lanes and progressive action sequences</i>
+</td>
+</tr>
+<tr><td colspan="2"><br/></td></tr>
+<tr>
+<td width="50%" align="center" style="padding: 10px;">
+<img src="output/figures/6_defensive_actions.png" alt="Defensive Actions" width="95%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Defensive Actions</b>
+<br/>
+<i>Defensive positioning and recovery patterns</i>
+</td>
+<td width="50%" align="center" style="padding: 10px;">
+<img src="output/figures/8_comparison_pizza.png" alt="Comparison Pizza" width="95%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Elite Comparison</b>
+<br/>
+<i>Enzo vs top central midfielders - balanced profile</i>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<img src="output/figures/13_similarity_heatmap.png" alt="Similarity Analysis" width="75%" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+<br/><br/>
+<b>Similarity Analysis</b>
+<br/>
+<i>Statistical twins revealing Enzo's unique profile combining creation with defensive volume</i>
+
+<br/><br/>
+
+> *All visualizations generated from StatsBomb data using custom analytics pipeline*
+
+</div>
 
 ---
 
-## 📋 Project Goal
+## Table of Contents
+
+- [Project Goal](#project-goal)
+- [Key Findings](#key-findings-data-driven)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [Visualizations](#visualizations)
+
+---
+
+## Project Goal
 
 **The Assignment:**
 1. Think of a player who interests you
@@ -43,7 +119,7 @@ I assessed Enzo Fernández's impact as Argentina's **"Missing Piece"**, hypothes
 
 ---
 
-## 🔬 Key Findings (Data-Driven)
+## Key Findings (Data-Driven)
 
 > **Hypothesis**: After entering the starting XI, Enzo Fernández acted as Argentina's main midfield connector and progression hub, performing at a significantly higher level than other central midfielders in terms of ball progression and volume.
 
@@ -70,7 +146,7 @@ The data unequivocally supports the hypothesis. Enzo functioned as a **"Right-Si
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 project_1/
@@ -97,7 +173,7 @@ project_1/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -142,7 +218,7 @@ Or visit the **[Live App](https://soccermatics-pro--enzo-fernandez-project1.stre
 
 ---
 
-## 📊 Visualizations
+## Visualizations
 
 The pipeline generates high-quality analytical visualizations stored in `output/figures/`:
 
