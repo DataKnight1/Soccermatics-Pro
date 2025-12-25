@@ -11,11 +11,11 @@ import matplotlib.patches as patches
 import matplotlib.colors as mcolors
 import matplotlib.patheffects as pe
 from mplsoccer import Pitch
-from src.core.colors import BLUES, VISUALIZATION_PRESETS, get_blue_cmap
+from src.core.colors import BLUES, ACCENTS, VISUALIZATION_PRESETS, get_blue_cmap
 from .utils import get_zone_centers, add_orientation_guides
 
 
-def create_zone_heatmap_pitch(df: pd.DataFrame, zone_col: str, title: str, cmap: str = "reception"):
+def create_zone_heatmap_pitch(df: pd.DataFrame, zone_col: str, title: str, cmap: str = "reception", takeaway: str = ""):
     """Create a soccer pitch with a 12-zone heatmap using mplsoccer."""
     fig, ax = plt.subplots(figsize=(14, 9), dpi=120)
     fig.patch.set_facecolor("#0B132B")
@@ -82,13 +82,25 @@ def create_zone_heatmap_pitch(df: pd.DataFrame, zone_col: str, title: str, cmap:
                 ),
             )
 
+    # Add Colorbar (Scale Bar)
+    sm = plt.cm.ScalarMappable(cmap=cmap_obj, norm=plt.Normalize(vmin=0, vmax=max_count))
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, fraction=0.035, pad=0.02)
+    cbar.set_label('Frequency (Count in Zone)', fontsize=11, color=BLUES["white"])
+    cbar.ax.tick_params(labelsize=10, colors=BLUES["white"])
+
     add_orientation_guides(ax)
-    ax.set_title(title, fontsize=18, fontweight="bold", color=BLUES["white"], pad=18)
+    
+    # Title and Takeaway
+    ax.set_title(title, fontsize=20, fontweight="bold", color=BLUES["white"], pad=25)
+    if takeaway:
+        ax.text(0.5, 1.02, takeaway, transform=ax.transAxes, 
+                ha='center', va='bottom', fontsize=14, color=ACCENTS['gold'], style='italic')
     fig.subplots_adjust(top=0.9)
     return fig
 
 
-def create_difference_heatmap(player_counts: pd.Series, avg_counts: pd.Series, title: str):
+def create_difference_heatmap(player_counts: pd.Series, avg_counts: pd.Series, title: str, takeaway: str = ""):
     """
     Difference heatmap using a single blue gradient (light = more use, dark = less use).
     """
@@ -167,6 +179,9 @@ def create_difference_heatmap(player_counts: pd.Series, avg_counts: pd.Series, t
                    fontsize=11, color=BLUES["white"])
     cbar.ax.tick_params(labelsize=10, colors=BLUES["white"])
 
-    ax.set_title(title, fontsize=18, fontweight="bold", color=BLUES["white"], pad=18)
+    ax.set_title(title, fontsize=18, fontweight="bold", color=BLUES["white"], pad=25)
+    if takeaway:
+        ax.text(0.5, 1.02, takeaway, transform=ax.transAxes, 
+                ha='center', va='bottom', fontsize=14, color=ACCENTS['gold'], style='italic')
     fig.subplots_adjust(top=0.9)
     return fig

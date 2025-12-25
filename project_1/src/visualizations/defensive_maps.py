@@ -12,7 +12,7 @@ from mplsoccer import Pitch
 from src.core.colors import BLUES, ACCENTS, VISUALIZATION_PRESETS
 
 
-def create_defensive_activity_map(defensive_df: pd.DataFrame, title: str):
+def create_defensive_activity_map(defensive_df: pd.DataFrame, title: str, takeaway: str = ""):
     """
     Plot defensive actions (Recoveries, Tackles, Interceptions) on a pitch.
     Uses KDE for density, plus scatter for specific events.
@@ -79,6 +79,9 @@ def create_defensive_activity_map(defensive_df: pd.DataFrame, title: str):
         labelcolor=BLUES["white"]
     )
     ax.set_title(title, fontsize=18, fontweight="bold", color=BLUES["white"], pad=20)
+    if takeaway:
+        ax.text(0.5, 1.02, takeaway, transform=ax.transAxes, 
+                ha='center', va='bottom', fontsize=14, color=ACCENTS['gold'], style='italic')
 
     plt.tight_layout()
     return fig

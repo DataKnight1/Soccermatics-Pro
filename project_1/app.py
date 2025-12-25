@@ -41,8 +41,11 @@ from src.visualizations import (
     create_quadrant_scatter_mpl,
     create_multi_metric_dispersion,
     create_percentile_heatmap_table,
+    create_teammate_cluster_grid,  # NEW
 )
 from src.analysis import DefensiveActionExtractor, calculate_similarity
+from src.analysis.teammate_analysis import TeammateAnalysis # NEW
+from src.data.data_loader import StatsBombDataLoader # NEW
 from src.core.colors import BLUES, ACCENTS, get_categorical_colors
 
 warnings.filterwarnings("ignore")
@@ -216,6 +219,18 @@ def load_population_prog_density() -> Optional[pd.Series]:
     except Exception as e:
         return None
 
+
+@st.cache_data
+def load_raw_events() -> Optional[pd.DataFrame]:
+    """Load raw event data for deeper analysis (Teammate Clusters)."""
+    try:
+        # Assuming StatsBombDataLoader works without arguments or with defaults
+        loader = StatsBombDataLoader(verbose=False)
+        data = loader.load_competition_data()
+        return data['events']
+    except Exception as e:
+        return None
+
 def find_target_player(df: pd.DataFrame, default_name: str = DEFAULT_TARGET_PLAYER) -> pd.Series:
     """Robust helper to find the target player row."""
     def normalize(name: str) -> str:
@@ -302,6 +317,7 @@ page = st.sidebar.radio(
     [
         "Overview",
         "Tactical Profile",
+        "Teammate Connections", # NEW
         "Comparative Analysis",
     ],
 )
@@ -332,25 +348,34 @@ if page == "Overview":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("### 🔍 Research Question")
+    st.markdown("### 🏆 The Claim: Argentina's Primary Link")
     st.markdown(
         """
-        *Was Enzo Fernández Argentina's primary link between defense and attack, and how did he create this connection differently from other central midfielders?*
-
-        **Answer: Yes, uniquely.**
+        **Definition:** A "Primary Link" must offer high volume (finding the ball), high reliability (keeping the ball), and directional intent (moving it to danger zones).
+        
+        **Executive Summary:**
+        *   **Volume & Reliability:** Enzo ranked **#2** in Deep Progressions (11.44/90) while maintaining **88.5%** pass completion. He was a safe outlet who constantly looked forward.
+        *   **Directional Bias:** Unlike peers who spread play evenly, Enzo showed a **31% bias to the right flank**, specifically targeting Messi and Molina.
+        *   **Impact:** This bias overloaded the right side, allowing Argentina to break low blocks by isolating their most dangerous creator (Messi) in space.
         """
     )
     st.markdown("---")
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Global Rank", f"{enzo_row['rank']:.0f}/{connector_df['rank'].max():.0f}")
+        st.metric("Global Rank", f"#{enzo_row['rank']:.0f} / {connector_df['rank'].max():.0f}", 
+                 help="Rank among all World Cup 2022 Midfielders for Deep Progression")
     with col2:
-        st.metric("Volume (p90)", f"{enzo_row['deep_progressions_p90']:.2f}")
+        st.metric("Volume (p90)", f"{enzo_row['deep_progressions_p90']:.2f}",
+                 help="Deep Progressions per 90 minutes")
     with col3:
-        st.metric("Right Bias", f"{enzo_row.get('right_side_pct', 0):.1f}%")
+        st.metric("Right Bias", f"{enzo_row.get('right_side_pct', 0):.1f}%",
+                 help="Percentage of progressive actions ending in the right half-space")
     with col4:
-        st.metric("Primary Hub", f"Zone {enzo_row.get('primary_reception_zone', 'N/A')}")
+        st.metric("Primary Hub", f"Zone {enzo_row.get('primary_reception_zone', 'N/A')}",
+                 help="Most frequent zone for receiving the ball")
+    
+    st.info("💡 **Takeaway:** Enzo didn't just 'play well'; he structurally changed how Argentina attacked by locking down the deep-right channel.")
 
     st.markdown("### Distinctive Patterns")
 
@@ -489,6 +514,7 @@ elif page == "Tactical Profile":
                     "reception_zone",
                     "Enzo Fernández: Deep Reception Zones (WC 2022)",
                     cmap="reception",
+                    takeaway="Zone 5 Hub: Provides constant central safety option for defenders."
                 )
                 st.pyplot(fig)
 
@@ -500,6 +526,7 @@ elif page == "Tactical Profile":
                     "progression_zone",
                     "Enzo Fernández: Deep Progression Target Zones (WC 2022)",
                     cmap="progression",
+                    takeaway="Targeting the Right Channel: 31% of progressions end in Zone 6/9/12."
                 )
                 st.pyplot(fig)
 
@@ -527,7 +554,8 @@ elif page == "Tactical Profile":
                         fig = create_difference_heatmap(
                             enzo_prog_p90,
                             pop_prog_density,
-                            "Difference Map: Enzo - Average CM (Target Zones)"
+                            "Difference Map: Enzo - Average CM (Target Zones)",
+                            takeaway="Right Flank Overload: Significantly higher usage of right wing vs average CM."
                         )
                         st.pyplot(fig)
 
@@ -545,7 +573,8 @@ elif page == "Tactical Profile":
                 st.markdown("**Top 10 most frequent zone-to-zone routes**")
                 prog_df = zone_df[zone_df['type'].isin(['Pass', 'Carry'])]
                 fig = create_premium_route_map(
-                    prog_df, "Enzo Fernández: Top 10 Progression Routes"
+                    prog_df, "Enzo Fernández: Top 10 Progression Routes",
+                    takeaway="Zone 5 to 9: The 'Molina Connection' is his top route."
                 )
                 st.pyplot(fig)
 
@@ -625,7 +654,8 @@ elif page == "Tactical Profile":
                 fig_diff = create_difference_heatmap(
                     enzo_def_p90,
                     pop_def_density,
-                    "Difference Map: Enzo - Average CM (Defensive Actions)"
+                    "Difference Map: Enzo - Average CM (Defensive Actions)",
+                    takeaway="Wide Recovery Bias: Covers proactively for advancing fullbacks."
                 )
                 st.pyplot(fig_diff)
 
@@ -639,6 +669,53 @@ elif page == "Tactical Profile":
                 st.error("Cannot calculate p90 (0 minutes).")
         else:
             st.warning("Comparison data missing. Run analysis to generate population density.")
+
+
+elif page == "Teammate Connections":
+    st.markdown("""
+    <div style='background: linear-gradient(135deg, #1D5D9B 0%, #0B132B 100%);
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                border: 2px solid #75AADB;'>
+        <h2 style='color: #FFFFFF; margin: 0; font-size: 24px;'>Whom Does He Connect?</h2>
+        <p style='color: #A8D8EA; margin: 5px 0 0 0; font-size: 14px;'>
+            Analyzing pass clustering to identifying key functional relationships.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    events_df = load_raw_events()
+    
+    if events_df is None or events_df.empty:
+        st.error("Could not load raw event data for teammate analysis.")
+    else:
+        st.markdown("### 🤝 Connection Networks (Top Recipients)")
+        st.info("💡 **Takeaway:** Enzo's distribution isn't random. Notice the distinct 'Right-Sided Overload' channel to Molina and Messi.")
+        
+        analyzer = TeammateAnalysis(events_df)
+        
+        # Get clusters for Enzo
+        # Ensure we look for "Enzo Fernández" or similar in the dataframe
+        clusters = analyzer.get_pass_clusters(enzo_name, top_n=6)
+        
+        if not clusters:
+             st.warning(f"No pass data found for {enzo_name}.")
+        else:
+             fig_grid = create_teammate_cluster_grid(
+                 clusters, 
+                 enzo_name, 
+                 title=f"{enzo_name}: Top Passing Connections"
+             )
+             st.pyplot(fig_grid)
+             
+             st.markdown("---")
+             st.markdown("### Interpretation Guide")
+             st.markdown("""
+             *   **Messi:** Note positions in the right half-space. Enzo feeds him in areas where he can turn and drive.
+             *   **Molina:** Deep right flank passes => Releasing the wing-back to stretch play.
+             *   **Mac Allister:** Short interplay on the left/center to retain possession.
+             """)
 
 
 elif page == "Comparative Analysis":

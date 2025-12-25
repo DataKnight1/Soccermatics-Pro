@@ -1,0 +1,24 @@
+# Data files
+data/
+*.parquet
+*.csv
+
+# Large output folders
+output/
+src/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -82,7 +82,7 @@ def create_pitch_with_progressions(zone_df: pd.DataFrame, title: str):
     return fig
 
 
-def create_premium_route_map(zone_df: pd.DataFrame, title: str):
+def create_premium_route_map(zone_df: pd.DataFrame, title: str, takeaway: str = ""):
     """
     Compact visualization for Top 10 Progression Routes with dark-blue theme.
     Uses a standard legend instead of a sidebar for better space utilization.
@@ -186,6 +186,9 @@ def create_premium_route_map(zone_df: pd.DataFrame, title: str):
     plt.setp(legend.get_title(), color=BLUES["white"], fontweight='bold')
 
     ax.set_title(title, fontsize=18, fontweight="bold", color=BLUES["white"], pad=15)
+    if takeaway:
+        ax.text(0.5, 1.02, takeaway, transform=ax.transAxes, 
+                ha='center', va='bottom', fontsize=14, color=BLUES['sky'], style='italic')
 
     plt.tight_layout()
     return fig

@@ -36,6 +36,7 @@ from .distribution_plots import (
     create_multi_metric_dispersion
 )
 from .comparison_tables import create_percentile_heatmap_table
+from .teammate_charts import create_teammate_cluster_grid
 
 __all__ = [
     'get_zone_centers',
@@ -60,4 +61,5 @@ __all__ = [
     'create_directional_distribution',
     'create_multi_metric_dispersion',
     'create_percentile_heatmap_table',
+    'create_teammate_cluster_grid',
 ]
