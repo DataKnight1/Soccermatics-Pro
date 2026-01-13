@@ -1,5 +1,9 @@
 <div align="center">
 
+<img src="assets/Project 2 - Expected Danger Model.png" alt="Expected Danger Model Cover" width="100%"/>
+
+<br/>
+
 <img src="assets/twelve_logo.png" alt="Twelve Football" width="120"/>
 
 # Expected Danger Model
