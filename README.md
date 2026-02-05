@@ -81,6 +81,22 @@ A dual-model machine learning system that predicts the offensive value of passes
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top">
+
+### [Project 3: Defensive Transitions Trigger](project_3/)
+
+**Objective:** *Defensive transition triggers & pressing moments (reference project)*
+
+A reference project pointing to external work on identifying and analyzing defensive transition triggers.
+
+#### Reference
+`GitHub` • `DataKnight1/defensivetransitionstrigger`
+
+**[📂 View Project](project_3/)** | **[🔗 Reference Repo](https://github.com/DataKnight1/defensivetransitionstrigger)**
+
+</td>
+</tr>
 </table>
 
 ---
@@ -159,7 +175,7 @@ Through these projects, I have developed expertise in:
 
 ### Navigation
 
-**[📂 Project 1: Enzo Fernández Analysis](project_1/)** | **[📂 Project 2: Expected Danger Model](project_2/)**
+**[📂 Project 1: Enzo Fernández Analysis](project_1/)** | **[📂 Project 2: Expected Danger Model](project_2/)** | **[📂 Project 3: Defensive Transitions Trigger](project_3/)**
 
 [⬆ Back to Top](#-soccermatics-pro)
 
